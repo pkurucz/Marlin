@@ -1,0 +1,85 @@
+SENDING:M43
+PIN:   0   Port: E0        RXD                         protected
+PIN:   1   Port: E1        TXD                         protected
+PIN:   2   Port: E4        X_MAX_PIN                   protected
+PIN:   3   Port: E5        X_MIN_PIN                   protected
+PIN:   4   Port: G5        FIL_RUNOUT_PIN              Output = 0    TIMER0B   PWM:   128    WGM: 3    COM0B: 0    CS: 3    TCCR0A: 3    TCCR0B: 3    TIMSK0: 5   compare interrupt enabled   overflow interrupt enabled
+.                          SERVO3_PIN                  Output = 0
+PIN:   5   Port: E3        SERVO2_PIN                  Output = 0    TIMER3A   PWM:  3005    WGM: 0    COM3A: 0    CS: 2    TCCR3A: 0    TCCR3B: 2    TIMSK3: 2   non-standard PWM mode   compare interrupt enabled
+PIN:   6   Port: H3        SERVO1_PIN                  Output = 0    TIMER4A   PWM:     0    WGM: 1    COM4A: 0    CS: 3    TCCR4A: 1    TCCR4B: 3    TIMSK4: 0
+PIN:   7   Port: H4        FAN1_PIN                    protected
+PIN:   8   Port: H5        HEATER_BED_PIN              protected
+.                          RAMPS_D8_PIN                protected
+PIN:   9   Port: H6        FAN_PIN                     protected
+.                          RAMPS_D9_PIN                protected
+PIN:  10   Port: B4        HEATER_0_PIN                protected
+.                          RAMPS_D10_PIN               protected
+PIN:  11   Port: B5        SERVO0_PIN                  Output = 0    TIMER1A   PWM:  2000    WGM: 4    COM1A: 0    CS: 2    TCCR1A: 0    TCCR1B: 10    TIMSK1: 2   non-standard PWM mode   compare interrupt enabled
+PIN:  12   Port: B6        PS_ON_PIN                   protected
+PIN:  13   Port: B7        LED_PIN                     Input  = 0    TIMER0A   PWM:     0    WGM: 3    COM0A: 0    CS: 3    TCCR0A: 3    TCCR0B: 3    TIMSK0: 5   overflow interrupt enabled
+ .                  TIMER1C is also tied to this pin                  TIMER1C   PWM:     0    WGM: 4    COM1C: 0    CS: 2    TCCR1A: 0    TCCR1B: 10    TIMSK1: 2   non-standard PWM mode
+PIN:  14   Port: J1        Y_MIN_PIN                   protected
+PIN:  15   Port: J0        Y_MAX_PIN                   protected
+PIN:  16   Port: H1        LCD_PINS_RS                 Output = 0
+PIN:  17   Port: H0        LCD_PINS_ENABLE             Output = 0
+PIN:  18   Port: D3        Z_MIN_PIN                   protected
+PIN:  19   Port: D2        Z_MAX_PIN                   protected
+PIN:  20   Port: D1        SDA                         Input  = 1
+PIN:  21   Port: D0        SCL                         Input  = 1
+PIN:  22   Port: A0        <unused/unknown>            Input  = 0
+PIN:  23   Port: A1        LCD_PINS_D4                 Output = 1
+PIN:  24   Port: A2        E0_ENABLE_PIN               protected
+PIN:  25   Port: A3        LCD_PINS_D5                 Input  = 1
+PIN:  26   Port: A4        E0_STEP_PIN                 protected
+PIN:  27   Port: A5        LCD_PINS_D6                 Input  = 0
+PIN:  28   Port: A6        E0_DIR_PIN                  protected
+PIN:  29   Port: A7        LCD_PINS_D7                 Input  = 0
+PIN:  30   Port: C7        E1_ENABLE_PIN               protected
+PIN:  31   Port: C6        BTN_EN1                     Input  = 1
+PIN:  32   Port: C5        <unused/unknown>            Input  = 0
+PIN:  33   Port: C4        BTN_EN2                     Input  = 1
+PIN:  34   Port: C3        E1_DIR_PIN                  protected
+PIN:  35   Port: C2        BTN_ENC                     Input  = 1
+PIN:  36   Port: C1        E1_STEP_PIN                 protected
+PIN:  37   Port: C0        BEEPER_PIN                  Output = 0
+PIN:  38   Port: D7        X_ENABLE_PIN                protected
+PIN:  39   Port: G2        <unused/unknown>            Input  = 0
+PIN:  40   Port: G1        Z_CS_PIN                    Input  = 0
+PIN:  41   Port: G0        KILL_PIN                    Input  = 1
+PIN:  42   Port: L7        E0_CS_PIN                   Input  = 0
+PIN:  43   Port: L6        <unused/unknown>            Input  = 0
+PIN:  44   Port: L5        E0_AUTO_FAN_PIN             protected
+.                          E1_CS_PIN                   protected
+PIN:  45   Port: L4        FAN2_PIN                    protected
+PIN:  46   Port: L3        Z_STEP_PIN                  protected
+PIN:  47   Port: L2        <unused/unknown>            Input  = 0
+PIN:  48   Port: L1        Z_DIR_PIN                   protected
+PIN:  49   Port: L0        SD_DETECT_PIN               Input  = 1
+.                          Y_CS_PIN                    Input  = 1
+PIN:  50   Port: B3        AVR_MISO_PIN                Input  = 0
+.                          MISO_PIN                    Input  = 0
+PIN:  51   Port: B2        AVR_MOSI_PIN                Input  = 1
+.                          MOSI_PIN                    Input  = 1
+PIN:  52   Port: B1        AVR_SCK_PIN                 Input  = 1
+.                          SCK_PIN                     Input  = 1
+PIN:  53   Port: B0        AVR_SS_PIN                  Input  = 1
+.                          SDSS                        Input  = 1
+.                          SS_PIN                      Input  = 1
+.                          X_CS_PIN                    Input  = 1
+PIN:  54   Port: F0 (A 0)  X_STEP_PIN                  protected
+PIN:  55   Port: F1 (A 1)  X_DIR_PIN                   protected
+PIN:  56   Port: F2 (A 2)  Y_ENABLE_PIN                protected
+PIN:  57   Port: F3 (A 3)  <unused/unknown>   Analog in =   488   Input  = 0
+PIN:  58   Port: F4 (A 4)  <unused/unknown>   Analog in =   345   Input  = 0
+PIN:  59   Port: F5 (A 5)  FILWIDTH_PIN                Analog in =   725
+PIN:  60   Port: F6 (A 6)  Y_STEP_PIN                  protected
+PIN:  61   Port: F7 (A 7)  Y_DIR_PIN                   protected
+PIN:  62   Port: K0 (A 8)  Z_ENABLE_PIN                protected
+PIN:  63   Port: K1 (A 9)  <unused/unknown>   Analog in =   601   Input  = 1
+PIN:  64   Port: K2 (A10)  <unused/unknown>   Analog in =   453   Input  = 0
+PIN:  65   Port: K3 (A11)  <unused/unknown>   Analog in =   316   Input  = 0
+PIN:  66   Port: K4 (A12)  MAX6675_SS                  Input  = 0
+PIN:  67   Port: K5 (A13)  TEMP_0_PIN                  protected
+PIN:  68   Port: K6 (A14)  TEMP_BED_PIN                protected
+PIN:  69   Port: K7 (A15)  TEMP_1_PIN                  Analog in =  1023
+
