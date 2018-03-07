@@ -301,6 +301,9 @@ void Servo::writeMicroseconds(int value) {
 // return the value as degrees
 int Servo::read() { return map(this->readMicroseconds() + 1, SERVO_MIN(), SERVO_MAX(), 0, 180); }
 
+// return the value as a +/- 180 degrees
+int Servo::read_m281() { return map(this->readMicroseconds() + 1, SERVO_MIN(), SERVO_MAX(), -180, 180); }
+
 int Servo::readMicroseconds() {
   return (this->servoIndex == INVALID_SERVO) ? 0 : ticksToUs(servo_info[this->servoIndex].ticks) + TRIM_DURATION;
 }
@@ -311,6 +314,20 @@ void Servo::move(int value) {
   constexpr uint16_t servo_delay[] = SERVO_DELAY;
   static_assert(COUNT(servo_delay) == NUM_SERVOS, "SERVO_DELAY must be an array NUM_SERVOS long.");
   if (this->attach(0) >= 0) {
+    this->write(value);
+    delay(servo_delay[this->servoIndex]);
+    #if ENABLED(DEACTIVATE_SERVOS_AFTER_MOVE)
+      this->detach();
+    #endif
+  }
+}
+
+void Servo::move_m281(int value) {
+  constexpr uint16_t servo_delay[] = SERVO_DELAY;
+  static_assert(COUNT(servo_delay) == NUM_SERVOS, "SERVO_DELAY must be an array NUM_SERVOS long.");
+  if (this->attach(0) >= 0) {
+    constexpr uint16_t allowed_pwm_range = 500; // +/- 500 uS
+    value = map(constrain(value, -180, 180), -180, 180, DEFAULT_PULSE_WIDTH - allowed_pwm_range, DEFAULT_PULSE_WIDTH + allowed_pwm_range);
     this->write(value);
     delay(servo_delay[this->servoIndex]);
     #if ENABLED(DEACTIVATE_SERVOS_AFTER_MOVE)

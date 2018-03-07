@@ -173,6 +173,7 @@
  * M260 - i2c Send Data (Requires EXPERIMENTAL_I2CBUS)
  * M261 - i2c Request Data (Requires EXPERIMENTAL_I2CBUS)
  * M280 - Set servo position absolute: "M280 P<index> S<angle|µs>". (Requires servos)
+ * M281 - Set servo position +/-180 deg absolute angle: "M281 P<index> S<angle>". (Requires servos)
  * M300 - Play beep sound S<frequency Hz> P<duration ms>
  * M301 - Set PID parameters P I and D. (Requires PIDTEMP)
  * M302 - Allow cold extrudes, or set the minimum extrude S<temperature>. (Requires PREVENT_COLD_EXTRUSION)
@@ -669,6 +670,7 @@ static bool send_ok[BUFSIZE];
 #if HAS_SERVOS
   Servo servo[NUM_SERVOS];
   #define MOVE_SERVO(I, P) servo[I].move(P)
+  #define MOVE_SERVO_M281(I, P) servo[I].move_m281(P)
   #if HAS_Z_SERVO_ENDSTOP
     #define DEPLOY_Z_SERVO() MOVE_SERVO(Z_ENDSTOP_SERVO_NR, z_servo_angle[0])
     #define STOW_Z_SERVO() MOVE_SERVO(Z_ENDSTOP_SERVO_NR, z_servo_angle[1])
@@ -8917,6 +8919,28 @@ inline void gcode_M226() {
     }
   }
 
+  /**
+   * M281: Get or set servo +/- 180 degree absolute position. P<index> [S<angle>]
+   */
+  inline void gcode_M281() {
+    if (!parser.seen('P')) return;
+    const int servo_index = parser.value_int();
+    if (WITHIN(servo_index, 0, NUM_SERVOS - 1)) {
+      if (parser.seen('S'))
+        MOVE_SERVO_M281(servo_index, parser.value_int());
+      else {
+        SERIAL_ECHO_START();
+        SERIAL_ECHOPAIR(" Servo ", servo_index);
+        SERIAL_ECHOLNPAIR(": ", servo[servo_index].read_m281());
+      }
+    }
+    else {
+      SERIAL_ERROR_START();
+      SERIAL_ECHOPAIR("Servo ", servo_index);
+      SERIAL_ECHOLNPGM(" out of range");
+    }
+  }
+
 #endif // HAS_SERVOS
 
 #if HAS_BUZZER
@@ -11384,6 +11408,9 @@ void process_next_command() {
       #if HAS_SERVOS
         case 280: // M280: Set servo position absolute
           gcode_M280();
+          break;
+        case 281: // M281: Set servo position +/-180 degree absolute
+          gcode_M281();
           break;
       #endif // HAS_SERVOS
 

@@ -192,6 +192,10 @@
   #define FAN_PIN 4      // IO pin. Buffer needed
 #endif
 
+// Laser Output Support - Use D45 - Heater 1 as a PWMed Fan # 2 to give pulsed 12V to the laser
+#define FAN1_PIN  7
+#define FAN2_PIN  45
+
 //
 // Misc. Functions
 //

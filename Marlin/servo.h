@@ -148,7 +148,11 @@ class Servo {
     void move(int value);              // attach the servo, then move to value
                                        // if value is < 200 it is treated as an angle, otherwise as pulse width in microseconds
                                        // if DEACTIVATE_SERVOS_AFTER_MOVE wait SERVO_DELAY, then detach
+    void move_m281(int value);         // attach the servo, then move to value
+                                       // The value is treated as absolute angle in the range -180 to 180
+                                       // if DEACTIVATE_SERVOS_AFTER_MOVE wait SERVO_DELAY, then detach
     int read();                        // returns current pulse width as an angle between 0 and 180 degrees
+    int read_m281();                   // returns current pulse width as an angle between -180 and 180 degrees
     int readMicroseconds();            // returns current pulse width in microseconds for this servo (was read_us() in first release)
     bool attached();                   // return true if this servo is attached, otherwise false
 
