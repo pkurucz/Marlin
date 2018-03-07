@@ -43,6 +43,7 @@ applet/
 *.ii
 *.swp
 tags
+cscope.*
 
 #
 # C++
